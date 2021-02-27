@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <title>ProjetoL</title>
+</head>
+<body>
+
+    <!-- Todo o HTML fica aqui -->
+    <div >
+        <div id="erro" class="alert alert-danger text-center" role="alert" style="display:none;"></div>
+          <div id="sucesso" class="alert alert-success text-center" role="alert" style="display:none;">
+            Cadastro realizado com sucesso!
+        </div>
+    </div>
+
+
+    <div class="card">
+        <div class="card-header text-center">
+          <h4>Area de cadastro</h4>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <h3>Cadastrar Pessoas</h3>
+            </div>
+            <div >
+                <div class="row">
+                    <div class="col-auto"> 
+                        <input class="form-control col-md-2" placeholder="Nome" type="text" id="f_name" >
+                    </div>
+                    <div class="col-auto"> 
+                        <input class="form-control col-md-2" placeholder="Sobrenome" type="text" id="l_name" >
+                    </div>
+        
+                    <div class="col-auto"> 
+                        <button type="button" class="btn btn-primary" onclick="cadastrarPessoa()">Salvar</button>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="row">
+                <h3>Cadastrar Sala</h3>
+            </div>
+            <div >
+                <div class="row">
+                    <div class="col-auto"> 
+                        <input class="form-control col-md-2" placeholder="Nome" type="text" id="room" >
+                    </div>
+                    <div class="col-auto"> 
+                        <input class="form-control col-md-2" placeholder="Lotação" type="text" id="l_room" >
+                    </div>
+        
+                    <div class="col-auto"> 
+                        <button type="button" class="btn btn-primary" onclick="cadastrarSalas()">Salvar</button>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="row">
+                <h3>Cadastrar Cafe</h3>
+            </div>
+            <div >
+                <div class="row">
+                    <div class="col-auto"> 
+                        <input class="form-control col-md-2" placeholder="Nome" type="text" id="Coffee" >
+                    </div>
+        
+                    <div class="col-auto">
+                        <button type="button" class="btn btn-primary" onclick="cadastrarCafe()">Salvar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+
+
+      <div class="card">
+        <div class="card-header text-center">
+            <h4>Area de busca</h4>
+          </div>
+        <div class="card-body">
+            <div >
+                <div class="row">
+                    <div class="col-auto"> 
+                        <input class="form-control col-md-2" placeholder="Nome" type="text" id="buscar" >
+                    </div>
+        
+                    <div class="col-auto">
+                        <button type="button" class="btn btn-primary" onclick="buscarPessoa()">Pessoas</button>
+                        <button type="button" class="btn btn-primary" onclick="buscarSala()">Salas</button>
+                        <button type="button" class="btn btn-primary" onclick="buscarCafe()">Cafes</button>
+                    </div>
+                </div>
+            </div>
+
+            <br>
+            <div id="conteudoBusca">
+
+            </div>
+
+        </div>
+      </div>
+
+
+    <!-- Aqui para o HTML -->
+    
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase.js"></script>
+    <script src="firebaseConfig.js"></script>
+    <script src="module/service.js"></script>
+    <script src="controller/utils.js"></script>
+    <script src="controller/cadastros.js"></script>
+    <script src="controller/operations.js"></script>
+   
+    <!-- Se colocar outra TAG script eu vou na sua casa e te bato, Use um arquivo em controller-->
+</body>
+</html>

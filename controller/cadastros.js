@@ -1,93 +1,93 @@
 //Colocar os dom aqui em let se for global 
-let erro = document.getElementById("erro");
-let sucesso = document.getElementById("sucesso");
+let error = document.getElementById("error");
+let success = document.getElementById("success");
 
-function cadastrarPessoa(){
-        sucesso.style.display = "none";
-        erro.style.display = "none";
+function personRegister(){
+        success.style.display = "none";
+        error.style.display = "none";
 
         let name = document.getElementById("f_name");
         let lastName = document.getElementById("l_name");
         if(name.value.length != 0 && lastName.value.length != 0){
-            service.obterTodas('Salas/').then(function(salas){
-                if(salas.length <= 1){
-                    erro.innerText = "E preciso ter ao menos duas salas cadastradas !"
-                    erro.style.display = "block";
+            service.getAll('Rooms/').then(function(room){
+                if(room.length <= 1){
+                    error.innerText = "E preciso ter ao menos duas salas cadastradas !"
+                    error.style.display = "block";
                 } else{
-                    return salas;
+                    return room;
                 }
-            }).then(function(salas){
-                service.obterTodas('Cafe/').then(function(cafes){
-                    if(cafes.length <= 1){
-                        erro.innerText = "E preciso ter ao menos dois pontos de  café cadastrados !"
-                        erro.style.display = "block";
+            }).then(function(room){
+                service.getAll('Coffee/').then(function(coffees){
+                    if(coffees.length <= 1){
+                        error.innerText = "E preciso ter ao menos dois pontos de  café cadastrados !"
+                        error.style.display = "block";
                     } else{
-                        let pessoa = {nome : name.value, sobrenome : lastName.value }
-                        let salaDecadastro = utils.ObterMenosOcupada(salas);
+                        let person = {name : name.value, lastname : lastName.value }
+                        let roomOfregister = utils.getlessFull(room);
     
-                        service.adcionarPessoaASala(pessoa,salaDecadastro.sala1);
-                        service.adcionarPessoaASala(pessoa,salaDecadastro.sala2);
+                        service.addPersontoRoom(person,roomOfregister.room1);
+                        service.addPersontoRoom(person,roomOfregister.room2);
 
-                        let cafeDecadastro = utils.ObterMenosOcupada(cafes);
-                        service.adcionarPessoaACafe(pessoa,cafeDecadastro.sala1);
-                        service.adcionarPessoaACafe(pessoa,cafeDecadastro.sala2);
+                        let coffeeOfregister = utils.getlessFull(coffees);
+                        service.addPersonCoffee(person,coffeeOfregister.room1);
+                        service.addPersonCoffee(person,coffeeOfregister.room2);
                         
-                        service.cadastrarPessoa(name.value,
+                        service.personRegister(name.value,
                                                 lastName.value,
-                                                salaDecadastro.sala1.dados.nome,
-                                                salaDecadastro.sala2.dados.nome,
-                                                cafeDecadastro.sala1.dados.nome,
-                                                cafeDecadastro.sala2.dados.nome)
+                                                roomOfregister.room1.dados.name,
+                                                roomOfregister.room2.dados.name,
+                                                coffeeOfregister.room1.dados.name,
+                                                coffeeOfregister.room2.dados.name)
     
                     name.value = "";
                     lastName.value = "";
-                    sucesso.style.display = "block";
+                    success.style.display = "block";
                     }
                 })
             })
             
         } else{
-            erro.innerText = "Pessoa deve ter nome e sobrenome !"
-            erro.style.display = "block";
+            error.innerText = "Pessoa deve ter nome e sobrenome !"
+            error.style.display = "block";
         };
 };
 
-function cadastrarSalas(){
-        sucesso.style.display = "none";
-        erro.style.display = "none";
+function registerRoom(){
+        success.style.display = "none";
+        error.style.display = "none";
 
         let name = document.getElementById("room");
         let locationName = document.getElementById("l_room");
 
         if(name.value.length != 0 && locationName.value.length != 0){
 
-            service.cadastrarSalas(name.value,locationName.value).then(function(res){
+            service.registerRoom(name.value,locationName.value).then(function(res){
                 name.value = ""; 
                 locationName.value = ""; 
-                sucesso.style.display = "block";
+                success.style.display = "block";
             });
             
         } else{
-            erro.innerText = "Sala precisa ter um nome e uma locação!"
-            erro.style.display = "block";
+            error.innerText = "Sala precisa ter um nome e uma locação!"
+            error.style.display = "block";
         };
 };
 
-function cadastrarCafe(){
-        sucesso.style.display = "none";
-        erro.style.display = "none";
+function registerCoffee(){
+        success.style.display = "none";
+        error.style.display = "none";
 
         let cname = document.getElementById("Coffee");
 
         if(cname.value.length != 0){
 
-            service.cadastrarCafe(cname.value).then(function(res){
+            service.registerCoffee(cname.value).then(function(res){
                 cname.value = ""; 
-                sucesso.style.display = "block";
+                success.style.display = "block";
             });
             
         } else{
-            erro.innerText = "Cafe precisa de um nome !"
-            erro.style.display = "block";
+            error.innerText = "Cafe precisa de um nome !"
+            error.style.display = "block";
         };
 };

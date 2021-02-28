@@ -1,28 +1,12 @@
 class Util{
     constructor(){};
 
-    ObterMenosOcupada(lista){
-        let menor1 = lista[0];
-        let menor2 = lista[1];
-        let indexMenor1 = 0;
-        let indexMenor2 = 0;
-    
-        for(let index = 1; index < lista.length; index++){
-            if( menor1.dados.pessoas.length > lista[index].dados.pessoas.length){
-                menor1 = lista[index];
-                indexMenor1 = index;
-            }
-        }
+    getlessFull(list){
+        let Ordenedlist = list.sort(function(obj1, obj2){
+            return obj1.dados.people.length < obj2.dados.people.length ? -1 : (obj1.dados.people.length > obj2.dados.people.length ? 1 : 0); 
+        });
 
-        for(let index = 0; index < lista.length; index++){
-            if (lista[index].id != menor1.id){
-                if( menor2.dados.pessoas.length > lista[index].dados.pessoas.length){
-                    menor2 = lista[index];
-                    indexMenor2 = index;
-                }
-            };
-        };
-        return {sala1:menor1,sala2:menor2};
+        return {room1:Ordenedlist[0],room2:Ordenedlist[1]};
     };
 
 }

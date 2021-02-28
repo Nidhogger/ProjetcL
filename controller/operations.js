@@ -1,57 +1,57 @@
-let nome = document.getElementById("buscar");
-let conteudo = document.getElementById("conteudoBusca");
+let name = document.getElementById("search");
+let conteudo = document.getElementById("searchContent");
 
-function buscarPessoa(){
-    let tabela = "";
-    service.obterPorNome(nome.value,"Pessoa/").then(function(pessoas){
-        pessoas.forEach(function(pessoa){
-            tabela += `<ul class="list-group">
-            <li class="list-group-item active" aria-current="true">${pessoa.dados.nome} ${pessoa.dados.sobrenome}</li>
-            <li class="list-group-item"><strong> Sala Etapa 1:</strong> ${pessoa.dados.sala1}</li>
-            <li class="list-group-item"><strong> Sala Etapa 2:</strong> ${pessoa.dados.sala2}</li>
-            <li class="list-group-item"><strong> Cafe Etapa 1:</strong> ${pessoa.dados.cafe1}</li>
-            <li class="list-group-item"><strong> Cafe Etapa 1:</strong> ${pessoa.dados.cafe2}</li>
+function searchPerson(){
+    let table = "";
+    service.getbyName(name.value,"Person/").then(function(people){
+        people.forEach(function(person){
+            table += `<ul class="list-group">
+            <li class="list-group-item active" aria-current="true">${person.dados.name} ${person.dados.lastname}</li>
+            <li class="list-group-item"><strong> Sala Etapa 1:</strong> ${person.dados.room1}</li>
+            <li class="list-group-item"><strong> Sala Etapa 2:</strong> ${person.dados.room2}</li>
+            <li class="list-group-item"><strong> Cafe Etapa 1:</strong> ${person.dados.coffee1}</li>
+            <li class="list-group-item"><strong> Cafe Etapa 1:</strong> ${person.dados.coffee2}</li>
           </ul> <br>`
         })
 
-        conteudo.innerHTML = tabela;
+        conteudo.innerHTML = table;
     })
 };
 
-function buscarSala(){
-    let tabela = "";
-    service.obterPorNome(nome.value,"Salas/").then(function(salas){
-        salas.forEach(function(sala){
+function searchRoom(){
+    let table = "";
+    service.getbyName(name.value,"Rooms/").then(function(room){
+        room.forEach(function(room){
             
-            tabela += `<ul class="list-group">
-            <li class="list-group-item active" aria-current="true">${sala.dados.nome} </li>
+            table += `<ul class="list-group">
+            <li class="list-group-item active" aria-current="true">${room.dados.name} </li>
             `
-            for(let pessoa of sala.dados.pessoas){
-                tabela +=  `<li class="list-group-item"><strong>Nome:</strong> ${pessoa.nome} ${pessoa.sobrenome}</li>`
+            for(let person of room.dados.people){
+                table +=  `<li class="list-group-item"><strong>Nome:</strong> ${person.name} ${person.lastname}</li>`
             };
-            tabela +=  `</ul> <br>`
+            table +=  `</ul> <br>`
 
         })
 
-        conteudo.innerHTML = tabela;
+        conteudo.innerHTML = table;
     })
 };
 
-function buscarCafe(){
-    let tabela = "";
-    service.obterPorNome(nome.value,"Cafe/").then(function(cafes){
-        cafes.forEach(function(cafe){
+function searchCoffee(){
+    let table = "";
+    service.getbyName(name.value,"Coffee/").then(function(coffees){
+        coffees.forEach(function(coffee){
             
-            tabela += `<ul class="list-group">
-            <li class="list-group-item active" aria-current="true">${cafe.dados.nome} </li>
+            table += `<ul class="list-group">
+            <li class="list-group-item active" aria-current="true">${coffee.dados.name} </li>
             `
-            for(let pessoa of cafe.dados.pessoas){
-                tabela +=  `<li class="list-group-item"><strong>Nome:</strong> ${pessoa.nome} ${pessoa.sobrenome}</li>`
+            for(let person of coffee.dados.people){
+                table +=  `<li class="list-group-item"><strong>Nome:</strong> ${person.name} ${person.lastname}</li>`
             };
-            tabela +=  `</ul> <br>`
+            table +=  `</ul> <br>`
 
         })
 
-        conteudo.innerHTML = tabela;
+        conteudo.innerHTML = table;
     })
 };

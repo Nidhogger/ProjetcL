@@ -1,90 +1,90 @@
 class Service{
     constructor(){};
     // usado
-   async cadastrarPessoa(nome,sobrenome,sala1,sala2,cafe1,cafe2){
-        db.ref('Pessoa/').push().set({
-            nome,
-            sobrenome,
-            sala1,
-            sala2,
-            cafe1,
-            cafe2
+   async personRegister(name,lastname,room1,room2,coffee1,coffee2){
+        db.ref('Person/').push().set({
+            name,
+            lastname,
+            room1,
+            room2,
+            coffee1,
+            coffee2
           })
     };
     // usado
-    async cadastrarSalas(nome, lotacao){
-        db.ref('Salas/').push().set({
-            nome,
-            lotacao,
-            pessoas: ""
+    async registerRoom(name, capacity){
+        db.ref('Rooms/').push().set({
+            name,
+            capacity,
+            people: ""
           });
     };
 
     //usado
-    async cadastrarCafe(nome){
-        db.ref('Cafe/').push().set({
-            nome,
-            pessoas: ""
+    async registerCoffee(name){
+        db.ref('Coffee/').push().set({
+            name,
+            people: ""
           });
     };
 
     //usado
-    obterTodas(path){
+    getAll(path){
         return new Promise( function(resolve, reject) {
             let listaObjetos = [];
             db.ref(path).once('value').then((dados) => {
-                dados.forEach(function(objeto) {
-                    listaObjetos.push({id: objeto.key,
-                                      dados: objeto.val()});
+                dados.forEach(function(object) {
+                    listaObjetos.push({id: object.key,
+                                      dados: object.val()});
                 })
                 resolve(listaObjetos);
             });
         });
     };
 
-    async obterPorNome(nome,path){
-        const todas = await this.obterTodas(path);
-        let listaDeObjetos = [];
-        todas.forEach(function(objeto) {
+    async getbyName(name,path){
+        const all = await this.getAll(path);
+        let listOfObjetcs = [];
+        all.forEach(function(object) {
             
-            if(objeto.dados.nome == nome){
-                listaDeObjetos.push(objeto);
+            if(object.dados.name == name){
+                listOfObjetcs.push(object);
             };
         })
-        return listaDeObjetos
+        return listOfObjetcs
     };
 
     // usado
-    async adcionarPessoaASala(pessoa,sala){
-        let listaPessoas;
-        if(sala.dados.pessoas.length == 0){
-            listaPessoas = [pessoa];
+    async addPersontoRoom(person,room){
+        let listPeople;
+        if(room.dados.people.length == 0){
+            listPeople = [person];
         }else{
-            listaPessoas = sala.dados.pessoas;
-            listaPessoas.push(pessoa);
+            listPeople = room.dados.people;
+            listPeople.push(person);
         }
 
-        db.ref('Salas/').child(sala.id).update({
-            nome: sala.dados.nome,
-            lotacao:sala.dados.lotacao,
-            pessoas: listaPessoas
+        db.ref('Rooms/').child(room.id).update({
+            name: room.dados.name,
+            capacity:room.dados.capacity,
+            people: listPeople
         })
     };
 
     //usado
-    async adcionarPessoaACafe(pessoa,cafe){
-        let listaPessoas;
+    async addPersonCoffee(person,coffee){
+        let listPeople;
 
-        if(cafe.dados.pessoas.length == 0){
-            listaPessoas = [pessoa];
+        if(coffee.dados.people.length == 0){
+            listPeople = [person];
         }else{
-            listaPessoas = cafe.dados.pessoas;
-            listaPessoas.push(pessoa);
+            listPeople = coffee.dados.people;
+            listPeople.push(person);
         }
 
-        db.ref('Cafe/').child(cafe.id).update({
-            nome: cafe.dados.nome,
-            pessoas: listaPessoas
+        db.ref('Coffee/').child(coffee.id).update({
+            name: coffee.dados.name,
+            people: listPeople
         })
     };
 };

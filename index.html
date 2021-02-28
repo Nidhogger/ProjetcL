@@ -9,10 +9,9 @@
 </head>
 <body>
 
-    <!-- Todo o HTML fica aqui -->
     <div >
-        <div id="erro" class="alert alert-danger text-center" role="alert" style="display:none;"></div>
-          <div id="sucesso" class="alert alert-success text-center" role="alert" style="display:none;">
+        <div id="error" class="alert alert-danger text-center" role="alert" style="display:none;"></div>
+          <div id="success" class="alert alert-success text-center" role="alert" style="display:none;">
             Cadastro realizado com sucesso!
         </div>
     </div>
@@ -36,7 +35,7 @@
                     </div>
         
                     <div class="col-auto"> 
-                        <button type="button" class="btn btn-primary" onclick="cadastrarPessoa()">Salvar</button>
+                        <button type="button" class="btn btn-primary" onclick="personRegister()">Salvar</button>
                     </div>
                 </div>
             </div>
@@ -54,7 +53,7 @@
                     </div>
         
                     <div class="col-auto"> 
-                        <button type="button" class="btn btn-primary" onclick="cadastrarSalas()">Salvar</button>
+                        <button type="button" class="btn btn-primary" onclick="registerRoom()">Salvar</button>
                     </div>
                 </div>
             </div>
@@ -69,7 +68,7 @@
                     </div>
         
                     <div class="col-auto">
-                        <button type="button" class="btn btn-primary" onclick="cadastrarCafe()">Salvar</button>
+                        <button type="button" class="btn btn-primary" onclick="registerCoffee()">Salvar</button>
                     </div>
                 </div>
             </div>
@@ -85,19 +84,19 @@
             <div >
                 <div class="row">
                     <div class="col-auto"> 
-                        <input class="form-control col-md-2" placeholder="Nome" type="text" id="buscar" >
+                        <input class="form-control col-md-2" placeholder="Nome" type="text" id="search" >
                     </div>
         
                     <div class="col-auto">
-                        <button type="button" class="btn btn-primary" onclick="buscarPessoa()">Pessoas</button>
-                        <button type="button" class="btn btn-primary" onclick="buscarSala()">Salas</button>
-                        <button type="button" class="btn btn-primary" onclick="buscarCafe()">Cafes</button>
+                        <button type="button" class="btn btn-primary" onclick="searchPerson()">Pessoas</button>
+                        <button type="button" class="btn btn-primary" onclick="searchRoom()">Salas</button>
+                        <button type="button" class="btn btn-primary" onclick="searchCoffee()">Cafes</button>
                     </div>
                 </div>
             </div>
 
             <br>
-            <div id="conteudoBusca">
+            <div id="searchContent">
 
             </div>
 
@@ -105,7 +104,6 @@
       </div>
 
 
-    <!-- Aqui para o HTML -->
     
     <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase.js"></script>
     <script src="firebaseConfig.js"></script>
@@ -114,6 +112,5 @@
     <script src="controller/cadastros.js"></script>
     <script src="controller/operations.js"></script>
    
-    <!-- Se colocar outra TAG script eu vou na sua casa e te bato, Use um arquivo em controller-->
 </body>
 </html>

@@ -1,6 +1,6 @@
 class Service{
     constructor(){};
-    // usado
+
    async personRegister(name,lastname,room1,room2,coffee1,coffee2){
         db.ref('Person/').push().set({
             name,
@@ -11,7 +11,7 @@ class Service{
             coffee2
           })
     };
-    // usado
+
     async registerRoom(name, capacity){
         db.ref('Rooms/').push().set({
             name,
@@ -20,7 +20,7 @@ class Service{
           });
     };
 
-    //usado
+
     async registerCoffee(name){
         db.ref('Coffee/').push().set({
             name,
@@ -28,14 +28,14 @@ class Service{
           });
     };
 
-    //usado
+
     getAll(path){
         return new Promise( function(resolve, reject) {
             let listaObjetos = [];
-            db.ref(path).once('value').then((dados) => {
-                dados.forEach(function(object) {
+            db.ref(path).once('value').then((data) => {
+                data.forEach(function(object) {
                     listaObjetos.push({id: object.key,
-                                      dados: object.val()});
+                        data: object.val()});
                 })
                 resolve(listaObjetos);
             });
@@ -47,7 +47,7 @@ class Service{
         let listOfObjetcs = [];
         all.forEach(function(object) {
             
-            if(object.dados.name == name){
+            if(object.data.name == name){
                 listOfObjetcs.push(object);
             };
         })
@@ -57,16 +57,16 @@ class Service{
     // usado
     async addPersontoRoom(person,room){
         let listPeople;
-        if(room.dados.people.length == 0){
+        if(room.data.people.length == 0){
             listPeople = [person];
         }else{
-            listPeople = room.dados.people;
+            listPeople = room.data.people;
             listPeople.push(person);
         }
 
         db.ref('Rooms/').child(room.id).update({
-            name: room.dados.name,
-            capacity:room.dados.capacity,
+            name: room.data.name,
+            capacity:room.data.capacity,
             people: listPeople
         })
     };
@@ -75,15 +75,15 @@ class Service{
     async addPersonCoffee(person,coffee){
         let listPeople;
 
-        if(coffee.dados.people.length == 0){
+        if(coffee.data.people.length == 0){
             listPeople = [person];
         }else{
-            listPeople = coffee.dados.people;
+            listPeople = coffee.data.people;
             listPeople.push(person);
         }
 
         db.ref('Coffee/').child(coffee.id).update({
-            name: coffee.dados.name,
+            name: coffee.data.name,
             people: listPeople
         })
     };

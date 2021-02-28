@@ -34,10 +34,10 @@ function personRegister(){
                         
                         service.personRegister(name.value,
                                                 lastName.value,
-                                                roomOfregister.room1.dados.name,
-                                                roomOfregister.room2.dados.name,
-                                                coffeeOfregister.room1.dados.name,
-                                                coffeeOfregister.room2.dados.name)
+                                                roomOfregister.room1.data.name,
+                                                roomOfregister.room2.data.name,
+                                                coffeeOfregister.room1.data.name,
+                                                coffeeOfregister.room2.data.name)
     
                     name.value = "";
                     lastName.value = "";

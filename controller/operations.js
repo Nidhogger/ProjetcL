@@ -1,6 +1,10 @@
 var search = document.getElementById("search");
 var content = document.getElementById("searchContent");
 
+    /**
+     * Função que pesquisa e retorna uma pessoa(Nome e Sobrenome) com todas as informações associadas.
+     * @constructor
+     */
 function searchPerson(){
     let table = "";
     service.getbyName(search.value,"Person/").then(function(people){
@@ -18,6 +22,10 @@ function searchPerson(){
     })
 };
 
+    /**
+     * Função que pesquisa no banco de dados uma Sala e retorna todos seus ocupantes.
+     * @constructor
+     */
 function searchRoom(){
     let table = "";
     service.getbyName(search.value,"Rooms/").then(function(room){
@@ -37,6 +45,10 @@ function searchRoom(){
     })
 };
 
+    /**
+     * Função que pesquisa no banco de dados um Café e retorna todos seus ocupantes.
+     * @constructor
+     */
 function searchCoffee(){
     let table = "";
     service.getbyName(search.value,"Coffee/").then(function(coffees){

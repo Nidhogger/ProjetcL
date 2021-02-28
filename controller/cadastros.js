@@ -1,7 +1,10 @@
-//Colocar os dom aqui em let se for global 
 let error = document.getElementById("error");
 let success = document.getElementById("success");
 
+    /**
+     * Função do banco que cadastra uma pessoa.
+     * @constructor
+     */
 function personRegister(){
         success.style.display = "none";
         error.style.display = "none";
@@ -52,6 +55,10 @@ function personRegister(){
         };
 };
 
+    /**
+     * Função do banco que cadastra uma Sala.
+     * @constructor
+     */
 function registerRoom(){
         success.style.display = "none";
         error.style.display = "none";
@@ -73,6 +80,10 @@ function registerRoom(){
         };
 };
 
+    /**
+     * Função do banco que cadastra um Café.
+     * @constructor
+     */
 function registerCoffee(){
         success.style.display = "none";
         error.style.display = "none";

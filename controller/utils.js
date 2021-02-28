@@ -1,6 +1,11 @@
 class Util{
     constructor(){};
 
+    /**
+     * Função do banco que a Sala ou Café com menor ocupação.
+     * @constructor
+     * @param {list} list - Uma lista contendo objetos do tipo Sala e Café.
+     */
     getlessFull(list){
         let Ordenedlist = list.sort(function(obj1, obj2){
             return obj1.data.people.length < obj2.data.people.length ? -1 : (obj1.data.people.length > obj2.data.people.length ? 1 : 0); 

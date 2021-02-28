@@ -3,7 +3,6 @@ var content = document.getElementById("searchContent");
 
     /**
      * Função que pesquisa e retorna uma pessoa(Nome e Sobrenome) com todas as informações associadas.
-     * @constructor
      */
 function searchPerson(){
     let table = "";
@@ -24,7 +23,6 @@ function searchPerson(){
 
     /**
      * Função que pesquisa no banco de dados uma Sala e retorna todos seus ocupantes.
-     * @constructor
      */
 function searchRoom(){
     let table = "";
@@ -47,7 +45,6 @@ function searchRoom(){
 
     /**
      * Função que pesquisa no banco de dados um Café e retorna todos seus ocupantes.
-     * @constructor
      */
 function searchCoffee(){
     let table = "";

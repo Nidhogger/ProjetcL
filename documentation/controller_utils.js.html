@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Home</title>
+    <title>JSDoc: Source: controller/utils.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,32 +17,37 @@
 
 <div id="main">
 
-    <h1 class="page-title">Home</h1>
+    <h1 class="page-title">Source: controller/utils.js</h1>
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/** Classe com utilitarios a ser usados no controlador. */
+class Util{
+    constructor(){};
 
+    /**
+     * Função do banco que a Sala ou Café com menor ocupação.
+     * @param {list} list - Uma lista contendo objetos do tipo Sala e Café.
+     */
+    getlessFull(list){
+        let Ordenedlist = list.sort(function(obj1, obj2){
+            return obj1.data.people.length &lt; obj2.data.people.length ? -1 : (obj1.data.people.length > obj2.data.people.length ? 1 : 0); 
+        });
 
-    <h3> </h3>
+        return {room1:Ordenedlist[0],room2:Ordenedlist[1]};
+    };
 
+}
 
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
+const utils = new Util();
+</code></pre>
+        </article>
+    </section>
 
 
 

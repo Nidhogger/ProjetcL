@@ -1,9 +1,9 @@
+/** Classe com utilitarios a ser usados no controlador. */
 class Util{
     constructor(){};
 
     /**
      * Função do banco que a Sala ou Café com menor ocupação.
-     * @constructor
      * @param {list} list - Uma lista contendo objetos do tipo Sala e Café.
      */
     getlessFull(list){
